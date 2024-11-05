@@ -3,25 +3,23 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include <cstring>  // Added for strcpy
+#include <cstring> 
 using namespace std;
 
-// Structure to hold element information with additional properties
 struct Element {
-    char symbol[3];        // Changed from const char* to char array
-    char name[20];         // Changed from const char* to char array
+    char symbol[3];      
+    char name[20];        
     int atomicNumber;
     double atomicWeight;
-    char electronConfig[30]; // Changed from const char* to char array
+    char electronConfig[30]; 
     int color;
     int x;
     int y;
     double atomicRadius;
     double electronegativity;
-    char block[2];         // Changed from const char* to char array
+    char block[2];       
 };
 
-// [Rest of the constants remain the same]
 const int boxSize = 60;
 const int baseX = 50;
 const int baseY = 30;
@@ -38,7 +36,6 @@ const int NOBLE_GAS = LIGHTRED;
 const int LANTHANIDE = CYAN;
 const int ACTINIDE = LIGHTCYAN;
 
-// Function to draw electron shells [remains the same]
 void drawElectronShells(Element elem, int centerX, int centerY) {
     setcolor(WHITE);
     setlinestyle(SOLID_LINE, 0, NORM_WIDTH);
@@ -57,7 +54,6 @@ void drawElectronShells(Element elem, int centerX, int centerY) {
     }
 }
 
-// Function to draw element categories legend
 void drawLegend() {
     const int legendX = WINDOW_WIDTH - 200;
     const int legendY = 100;
@@ -169,24 +165,21 @@ void drawElement(Element& elem) {
     outtextxy(elem.x + boxSize - 15, elem.y + boxSize - 15, elem.block);
 }
 
-// Function to check if mouse click is inside element box [remains the same]
+// Function to check if mouse click is inside element box 
 bool isClickInElement(int mouseX, int mouseY, Element elem) {
     return (mouseX >= elem.x && mouseX <= elem.x + boxSize &&
             mouseY >= elem.y && mouseY <= elem.y + boxSize);
 }
 
 int main() {
-    // Initialize graphics
+    
     initwindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Interactive Periodic Table");
     setbkcolor(BLACK);
     cleardevice();
     
-    // Create and initialize elements array
-    Element elements[118];  // Declare array
     
-    // Initialize first element as example (you'll need to do this for all elements)
-   // Initialize all elements
-// Period 1
+    Element elements[118];  
+    
 strcpy(elements[0].symbol, "H");
 strcpy(elements[0].name, "Hydrogen");
 strcpy(elements[0].electronConfig, "1s1");
@@ -207,7 +200,7 @@ elements[1].color = NOBLE_GAS;
 elements[1].x = baseX + (17 * boxSize);
 elements[1].y = baseY;
 
-// Period 2
+
 strcpy(elements[2].symbol, "Li");
 strcpy(elements[2].name, "Lithium");
 strcpy(elements[2].electronConfig, "2s1");
@@ -288,7 +281,7 @@ elements[9].color = NOBLE_GAS;
 elements[9].x = baseX + (17 * boxSize);
 elements[9].y = baseY + boxSize;
 
-// Period 3
+
 strcpy(elements[10].symbol, "Na");
 strcpy(elements[10].name, "Sodium");
 strcpy(elements[10].electronConfig, "3s1");
@@ -299,7 +292,7 @@ elements[10].color = ALKALI_METAL;
 elements[10].x = baseX;
 elements[10].y = baseY + (2 * boxSize);
 
-// Period 3 (continued)
+
 strcpy(elements[11].symbol, "Mg");
 strcpy(elements[11].name, "Magnesium");
 strcpy(elements[11].electronConfig, "3s2");
@@ -370,7 +363,7 @@ elements[17].color = NOBLE_GAS;
 elements[17].x = baseX + (17 * boxSize);
 elements[17].y = baseY + (2 * boxSize);
 
-// Period 4 (first part)
+
 strcpy(elements[18].symbol, "K");
 strcpy(elements[18].name, "Potassium");
 strcpy(elements[18].electronConfig, "4s1");
@@ -391,7 +384,7 @@ elements[19].color = ALKALINE_EARTH;
 elements[19].x = baseX + boxSize;
 elements[19].y = baseY + (3 * boxSize);
 
-// First row transition metals
+
 strcpy(elements[20].symbol, "Sc");
 strcpy(elements[20].name, "Scandium");
 strcpy(elements[20].electronConfig, "3d1 4s2");
@@ -401,7 +394,7 @@ elements[20].atomicWeight = 44.956;
 elements[20].color = TRANSITION_METAL;
 elements[20].x = baseX + (2 * boxSize);
 elements[20].y = baseY + (3 * boxSize);
-// Period 4 (continued - transition metals)
+
 strcpy(elements[21].symbol, "Ti");
 strcpy(elements[21].name, "Titanium");
 strcpy(elements[21].electronConfig, "3d2 4s2");
@@ -574,7 +567,7 @@ elements[37].color = ALKALINE_EARTH;
 elements[37].x = baseX + boxSize;
 elements[37].y = baseY + (4 * boxSize);
 
-// Period 5 (d-block)
+
 strcpy(elements[38].symbol, "Y");
 strcpy(elements[38].name, "Yttrium");
 strcpy(elements[38].electronConfig, "4d1 5s2");
@@ -675,7 +668,7 @@ elements[47].color = TRANSITION_METAL;
 elements[47].x = baseX + (11 * boxSize);
 elements[47].y = baseY + (4 * boxSize);
 
-// Period 5 (p-block)
+
 strcpy(elements[48].symbol, "In");
 strcpy(elements[48].name, "Indium");
 strcpy(elements[48].electronConfig, "4d10 5s2 5p1");
@@ -736,7 +729,7 @@ elements[53].color = NOBLE_GAS;
 elements[53].x = baseX + (17 * boxSize);
 elements[53].y = baseY + (4 * boxSize);
 
-// Period 6 (s-block)
+
 strcpy(elements[54].symbol, "Cs");
 strcpy(elements[54].name, "Cesium");
 strcpy(elements[54].electronConfig, "6s1");
@@ -757,7 +750,7 @@ elements[55].color = ALKALINE_EARTH;
 elements[55].x = baseX + boxSize;
 elements[55].y = baseY + (5 * boxSize);
 
-// Lanthanides (placed in separate row below main table)
+
 strcpy(elements[56].symbol, "La");
 strcpy(elements[56].name, "Lanthanum");
 strcpy(elements[56].electronConfig, "5d1 6s2");
@@ -778,7 +771,7 @@ elements[57].color = LANTHANIDE;
 elements[57].x = baseX + (3 * boxSize);
 elements[57].y = baseY + (7 * boxSize);
 
-// Lanthanides (elements 57-71)
+
 strcpy(elements[56].symbol, "La");
 strcpy(elements[56].name, "Lanthanum");
 strcpy(elements[56].electronConfig, "5d1 6s2");
@@ -932,22 +925,20 @@ elements[70].y = baseY + (7 * boxSize);
 
 
 
-    // [Initialize rest of elements similarly]
     
-    // Draw title
     settextstyle(GOTHIC_FONT, HORIZ_DIR, 3);
     setcolor(WHITE);
     outtextxy(baseX, 5, (char*)"Interactive Periodic Table of Elements");
     
-    // Draw legend
+    
     drawLegend();
     
-    // Draw periodic table
+    
     for(int i = 0; i < 118; i++) {
         drawElement(elements[i]);
     }
     
-    // Main event loop
+    
     while(1) {
         if(ismouseclick(WM_LBUTTONDOWN)) {
             int mouseX, mouseY;
@@ -956,7 +947,7 @@ elements[70].y = baseY + (7 * boxSize);
             for(int i = 0; i < 118; i++) {
                 if(isClickInElement(mouseX, mouseY, elements[i])) {
                     showElementDetails(elements[i]);
-                    // Redraw everything
+                    
                     cleardevice();
                     settextstyle(GOTHIC_FONT, HORIZ_DIR, 3);
                     setcolor(WHITE);
